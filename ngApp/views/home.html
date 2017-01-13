@@ -1,0 +1,30 @@
+
+<h2>Home</h2>
+
+<p>{{controller.message}}</p>
+
+<div class='dropdown'>
+ <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+ <span class="caret"></span></button>
+
+ <ul class="dropdown-menu">
+   <li ng-repeat="makes in controller.makes">{{makes.name}}</li>
+
+</ul>
+</div>
+<br/>
+
+<div>
+  <label>Search Inventory:</label>
+  <input class='input'ng-model="controller.search"
+  ng-model-options="{debounce:1000}"
+  ng-change="controller.fetch()" />
+
+
+<ul id='list'>
+    <li ng-repeat="car in controller.cars|filter:{name:controller.car.search}"
+      ng-click="controller.showModal(car)">
+        {{car.ShortDescription}}
+    </li>
+</ul>
+</div>

@@ -1,0 +1,12 @@
+body{
+  background-color: skyblue;
+
+}
+#list{
+  border-style: inset;
+  border-color: gold;
+}
+.input{
+  border-style: ridge;
+  border-color: black;
+}
