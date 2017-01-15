@@ -32,17 +32,30 @@ var CarApp;
                     resolve: {
                         car: function () { return car; }
                     },
-                    size: 'sm'
+                    size: 'lg'
                 });
+            };
+            HomeController.prototype.doSomething = function (id) {
+                var i;
+                for (i = 0; i < this.cars.length; i++) {
+                    if (this.makes.id == this.cars.CarMakeId) {
+                        return this.makes.id;
+                    }
+                    else {
+                        return alert("Sorry, there are no cars for that description!");
+                    }
+                }
             };
             return HomeController;
         }());
         Controllers.HomeController = HomeController;
         angular.module('CarApp').controller('HomeController', HomeController);
         var ModelController = (function () {
-            function ModelController(car, $uibModalInstance) {
+            function ModelController(car, $http, $uibModalInstance) {
                 this.car = car;
+                this.$http = $http;
                 this.$uibModalInstance = $uibModalInstance;
+                this.$http.get('/api/cars' + this.car.id);
             }
             ModelController.prototype.closeModal = function () {
                 this.$uibModalInstance.close();

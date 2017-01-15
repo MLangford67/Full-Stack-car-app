@@ -8,7 +8,7 @@
  <span class="caret"></span></button>
 
  <ul class="dropdown-menu">
-   <li ng-repeat="makes in controller.makes">{{makes.name}}</li>
+   <li ng-click="controller.doSomething(this.cars.id)" ng-repeat="makes in controller.makes" >{{makes.name}}</li>
 
 </ul>
 </div>
@@ -16,14 +16,15 @@
 
 <div>
   <label>Search Inventory:</label>
-  <input class='input' ng-model="controller.car.search"
-  ng-model-options="{debounce:1000}"
-  ng-change="controller.fetch()" />
+  <input class='input' ng-model="controller.search"/>
+  <ng-model-options="{debounce:1000}"
+
 
 
 <ul id='list'>
-    <li ng-repeat="car in controller.cars|filter:{name:controller.car.search}"
-      ng-click="controller.showModal(car)">
+    <li ng-repeat="car in controller.cars|filter:{ShortDescription:controller.search}"
+    ng-click="controller.showModal(car)">
+
         {{car.ShortDescription}}
     </li>
 </ul>

@@ -2,6 +2,7 @@ namespace CarApp.Controllers {
 
 const apiURL = '/api/makes/search/';
 
+
     export class HomeController {
         public message = 'Welcome!';
         public results;
@@ -21,6 +22,7 @@ const apiURL = '/api/makes/search/';
             this.$http.get('/api/cars')
           .then((response) => {
             this.cars = response.data;
+
           })
             .catch((response) => {
             console.error('Coult not retrieve car list.');
@@ -36,22 +38,40 @@ const apiURL = '/api/makes/search/';
                   resolve: {
                     car:()=> car
                   },
-                  size: 'sm'
+                  size: 'lg'
               });
+      }
+
+          public doSomething(id){
+              let i;
+
+              for(i = 0; i < this.cars.length; i ++){
+              if(this.makes.id == this.cars.CarMakeId){
+                return this.makes.id
+              }else{
+                return alert("Sorry, there are no cars for that description!")
+              }
+
+            }
+
+
+
           }
 
 
 
 
 
+
+
             // Use ng-model of selectedCarMakeId on search input
-
-
+          //
+          //
           // fetch(){
           //
           //   if (this.search) {
           //       console.log('searching');
-          //       this.$http.get('/api/makes/' + this.search)
+          //       this.$http.get('/api/cars/' + this.search)
           //           .then((results) => {
           //               this.cars= results.data;
           //           });
@@ -72,7 +92,8 @@ const apiURL = '/api/makes/search/';
       }
 
 
-    constructor(public car, private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance){
+    constructor(public car, private $http: ng.IHttpService, private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance){
+        this.$http.get('/api/cars' + this.car.id)
 
       }
 
