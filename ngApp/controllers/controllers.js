@@ -2,7 +2,6 @@ var CarApp;
 (function (CarApp) {
     var Controllers;
     (function (Controllers) {
-        var apiURL = '/api/makes/search/';
         var HomeController = (function () {
             function HomeController($http, $uibModal) {
                 var _this = this;
@@ -36,15 +35,8 @@ var CarApp;
                 });
             };
             HomeController.prototype.doSomething = function (id) {
-                var i;
-                for (i = 0; i < this.cars.length; i++) {
-                    if (this.makes.id == this.cars.CarMakeId) {
-                        return this.makes.id;
-                    }
-                    else {
-                        return alert("Sorry, there are no cars for that description!");
-                    }
-                }
+                this.selectedCarMakeId = id;
+                console.log(id);
             };
             return HomeController;
         }());

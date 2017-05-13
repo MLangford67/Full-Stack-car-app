@@ -1,6 +1,5 @@
 namespace CarApp.Controllers {
 
-const apiURL = '/api/makes/search/';
 
 
     export class HomeController {
@@ -10,6 +9,7 @@ const apiURL = '/api/makes/search/';
         public makes;
         public search;
         public selectedCarMakeId;
+
 
         constructor(private $http: ng.IHttpService, private $uibModal: angular.ui.bootstrap.IModalService) {
           this.$http.get('/api/makes')
@@ -43,22 +43,17 @@ const apiURL = '/api/makes/search/';
       }
 
           public doSomething(id){
-              let i;
 
-              for(i = 0; i < this.cars.length; i ++){
-              if(this.makes.id == this.cars.CarMakeId){
-                return this.makes.id
-              }else{
-                return alert("Sorry, there are no cars for that description!")
-              }
+
+              this.selectedCarMakeId = id;
+
+              console.log(id)
 
             }
 
 
-
           }
-
-
+            angular.module('CarApp').controller('HomeController', HomeController)
 
 
 
@@ -81,8 +76,6 @@ const apiURL = '/api/makes/search/';
 
 
 
-  }
-    angular.module('CarApp').controller('HomeController', HomeController)
 
 
     export class ModelController{

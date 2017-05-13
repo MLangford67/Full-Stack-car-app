@@ -8,7 +8,7 @@
  <span class="caret"></span></button>
 
  <ul class="dropdown-menu">
-   <li ng-click="controller.doSomething(this.cars.id)" ng-repeat="makes in controller.makes" >{{makes.name}}</li>
+   <li ng-click="controller.doSomething(make.id)" ng-repeat="make in controller.makes" >{{make.name}}</li>
 
 </ul>
 </div>
@@ -22,7 +22,7 @@
 
 
 <ul id='list'>
-    <li ng-repeat="car in controller.cars|filter:{ShortDescription:controller.search}"
+    <li ng-repeat="car in controller.cars|filter:{ShortDescription:controller.search, CarMakeId:controller.selectedCarMakeId}"
     ng-click="controller.showModal(car)">
 
         {{car.ShortDescription}}
